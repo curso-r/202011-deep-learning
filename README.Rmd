@@ -37,7 +37,8 @@ Repositório com material das aulas de deep learning com R.
 knitr::kable(
   tibble::tibble(
     exemplo = list.files("exemplos/"),
-    link = paste0("[link](https://curso-r.github.io/202011-deep-learning/exemplos/", exemplo, ")")
+    link = paste0("[link](https://curso-r.github.io/202011-deep-learning/exemplos/", exemplo, ")"),
+    gh_link = paste0("[link](https://github.com/curso-r/202011-deep-learning/blob/main/exemplos/", exemplo, ")")
   )
 )
 ```
@@ -48,7 +49,8 @@ knitr::kable(
 knitr::kable(
   tibble::tibble(
     exercicio = list.files("exercicios/"),
-    link = paste0("[link](https://curso-r.github.io/202011-deep-learning/exemplos/", exercicio, ")")
+    link = paste0("[link](https://curso-r.github.io/202011-deep-learning/exemplos/", exercicio, ")"),
+    gh_link = paste0("[link](https://github.com/curso-r/202011-deep-learning/blob/main/exemplos/", exercicio, ")")
   )
 )
 ```
@@ -59,7 +61,8 @@ knitr::kable(
 knitr::kable(
   tibble::tibble(
     exercicio = list.files("respostas/"),
-    link = paste0("[link](https://curso-r.github.io/202011-deep-learning/exemplos/", exercicio, ")")
+    link = paste0("[link](https://curso-r.github.io/202011-deep-learning/exemplos/", exercicio, ")"),
+    gh_link = paste0("[link](https://github.com/curso-r/202011-deep-learning/blob/main/exemplos/", exercicio, ")")
   )
 )
 ```
