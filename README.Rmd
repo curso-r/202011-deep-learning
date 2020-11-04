@@ -13,17 +13,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-Repositório principal do curso Deep Learning.
+Repositório com material das aulas de deep learning com R.
 
-Inscreva-se no curso: https://www.curso-r.com/cursos/deep-learning
-
-**Acesse o material completo do curso escolhendo uma das turmas abaixo**.
-
-```{r, echo = FALSE, message = FALSE, warning = FALSE}
-knitr::kable(CursoR:::listar_turmas_recentes("deep-learning"))
-```
-
-# Ementa
+## Ementa
 
 - **Introdução**
   - O que é e quando utilizar Deep Learning
@@ -37,3 +29,37 @@ knitr::kable(CursoR:::listar_turmas_recentes("deep-learning"))
   - Redes neurais convolucionais (CNN)
   - *Long short-term memory* (LSTM)
 
+## Scripts usados em aula
+
+#### Exemplos 
+
+```{r, echo = FALSE}
+knitr::kable(
+  tibble::tibble(
+    exemplo = list.files("exemplos/"),
+    link = paste0("https://curso-r.github.io/202011-deep-learning/exemplos/", exemplo)
+  )
+)
+```
+
+#### Exercicios
+
+```{r, echo = FALSE}
+knitr::kable(
+  tibble::tibble(
+    exercicio = list.files("exercicios/"),
+    link = paste0("https://curso-r.github.io/202011-deep-learning/exemplos/", exercicio)
+  )
+)
+```
+
+#### Respostas
+
+```{r, echo = FALSE}
+knitr::kable(
+  tibble::tibble(
+    exercicio = list.files("respostas/"),
+    link = paste0("https://curso-r.github.io/202011-deep-learning/exemplos/", exercicio)
+  )
+)
+```
