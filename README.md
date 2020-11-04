@@ -32,6 +32,11 @@ instalar, melhor\!
 
 1)  Instale o R\! De preferência a versão mais recente (\>= 4.0).
 
+No Windows você também precisa instalar o [Microsoft Visual C++
+Redistributable for Visual Studio 2015, 2017
+and 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
+Baixar a versão x64.
+
 2)  Execute as seguintes linhas de código em uma sessão limpa do R.
     (Certifique-se de fechar todas as outras sessões do R/RStudio que
     estiverem abertas no seu computador).
@@ -49,6 +54,9 @@ instalar, melhor\!
 <!-- end list -->
 
     tensorflow::tf_version() # deve retornar 2.2
+
+Nesse vídeo você pode ver o passo a passo da instalação no Windows:
+<https://www.youtube.com/watch?v=nSOyfBulXlQ&feature=youtu.be>
 
 ## Scripts usados em aula
 
