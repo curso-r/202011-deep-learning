@@ -58,6 +58,11 @@ Baixar a versão x64.
 Nesse vídeo você pode ver o passo a passo da instalação no Windows:
 <https://www.youtube.com/watch?v=nSOyfBulXlQ&feature=youtu.be>
 
+## Dúvidas
+
+O melhor lugar para tirar dúvidas relativas ao conteúdo do curso é no
+nosso [discourse](https://discourse.curso-r.com/).
+
 ## Scripts usados em aula
 
 #### Exemplos
