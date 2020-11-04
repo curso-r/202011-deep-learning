@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Introdução ao Deep Learning com R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Falbel" />
+    <script src="libs/header-attrs-2.1.1/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: middle, center, inverse
+
+# Introdução ao Deep Learning com R
+
+### Curso-R
+
+
+
+---
+
+## Curso-R
+
+![:scale 85%](img/professores.png)
+
+---
+
+## Linha do tempo
+
+&lt;center&gt;
+&lt;img src="img/linha_do_tempo.png" width = 35%&gt;&lt;/img&gt;
+&lt;/center&gt;
+
+---
+
+## Nossos cursos
+
+.pull-left[
+&lt;div class="container center"&gt;
+  &lt;div class="card"&gt;
+    &lt;h2&gt;Programação em R&lt;/h2&gt;
+    &lt;hr style = "background-color: #3bb44a;"/&gt;
+    &lt;p&gt;&lt;a href = "https://www.curso-r.com/cursos/r4ds-1/"&gt;R para Ciência de dados I&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;a href = "https://www.curso-r.com/cursos/r4ds-2/"&gt;R para Ciência de dados II&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;br&gt;
+
+&lt;div class="container center"&gt;
+  &lt;div class="card"&gt;
+    &lt;h2&gt;Modelagem&lt;/h2&gt;
+    &lt;hr style = "background-color: #996699;"/&gt;
+    &lt;p&gt;&lt;a href = "https://www.curso-r.com/cursos/regressao/"&gt;Regressão Linear&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href = "https://www.curso-r.com/cursos/intro-machine-learning/"&gt;Machine Learning&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href = "https://www.curso-r.com/cursos/xgboost/"&gt;XGBoost&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href = "https://www.curso-r.com/cursos/deep-learning/"&gt;Deep Learning&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+]
+
+
+.pull-right[
+&lt;div class="container center"&gt;
+  &lt;div class="card"&gt;
+    &lt;h2&gt;Extração de dados&lt;/h2&gt;
+    &lt;hr style = "background-color: #eeba30;"/&gt;
+    &lt;p&gt;&lt;a href = "https://www.curso-r.com/cursos/web-scraping-1/"&gt;Web scraping I&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;a href = "https://www.curso-r.com/cursos/web-scraping-2/"&gt;Web scraping II&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;br&gt;
+
+&lt;div class="container center"&gt;
+  &lt;div class="card"&gt;
+    &lt;h2&gt;Comunicação e automação&lt;/h2&gt;
+    &lt;hr style = "background-color: #ff6699;"/&gt;
+    &lt;p&gt;&lt;a href = "https://www.curso-r.com/cursos/dashboards/"&gt;Dashboards com R&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;a href = "https://www.curso-r.com/cursos/deploy/"&gt;Deploy&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+]
+
+
+---
+
+## Nesse curso vamos falar de
+
+- Regressão linear e logística
+- Multi-layer perceptrons
+- Redes neurais convolucionais
+- Modelos pré-treinados para imagens
+- Redes neurais para textos
+- Redes neurais recorrentes
+- Modelos pré-treinados para textos
+
+---
+
+## O que é Deep learning?
+
+-   Subconjunto de técnicas de Machine Learning
+
+![:scale 50%](img/artificial-intelligence.png)
+
+Fonte: Deep Learning with R, Chollet, F et al
+
+---
+## O que é Deep learning?
+
+- Aprender representações dos dados em camadas. Aprender representações dos dados 'hierarquicamente'. 
+
+![:scale 75%](img/dl-deep.png)
+
+Fonte: Deep Learning with R, Chollet, F et al
+
+---
+
+## Por que Deep Learning
+
+-   Estado da arte em diversos problemas muito importantes.
+
+![:scale 65%](img/Screen Shot 2020-05-09 at 10.51.43.png)
+
+Fonte: [Apr. resultados ILSVRC 2017](http://image-net.org/challenges/talks_2017/ILSVRC2017_overview.pdf)
+
+---
+
+## Por que Deep learning?
+
+- Resultados impressionantes em tradução.
+
+![](img/image00.png)
+
+Fonte: [A Neural Network for Machine Translation, at Production Scale](https://ai.googleblog.com/2016/09/a-neural-network-for-machine.html)
+---
+
+## Por que Deep Learning?
+
+- Resultados em Reinforcement Learning
+
+![:scale 75%](img/unnamed.gif)
+
+Fonte: [AlphaZero: Shedding new light on chess, shogi, and Go](https://deepmind.com/blog/article/alphazero-shedding-new-light-grand-games-chess-shogi-and-go)
+
+---
+
+## Por que Deep Learning?
+
+- Reconhecimento de fala
+- Reconhecimento em vídeos
+
+![:scale 50%](img/1_vAhhl1cMGTzBUTYnIMssIQ.png)
+
+Fonte: [Tesla’s Deep Learning at Scale: Using Billions of Miles to Train Neural Networks](https://towardsdatascience.com/teslas-deep-learning-at-scale-7eed85b235d3)
+
+---
+
+class: middle, center, inverse
+
+# Tudo começa com ....
+
+## Regressão Linear
+
+---
+
+## Regressão Linear
+
+Prevendo o preço de uma casa a partir do tamanho em metros quadrados.
+
+&lt;img src="index_files/figure-html/unnamed-chunk-1-1.png" width="960" /&gt;
+
+---
+
+## Definição do modelo
+
+Definimos o modelo de regressão linear da seguinte forma:
+
+`$$\hat{y_i} = w \times x_i + b$$`
+- `\(y_i\)`: preço do imóvel `\(i\)`
+- `\(x_i\)`: área do imóvel `\(i\)`
+
+Poderíamos escrever
+
+`$$\hat{y_i} = f(x_i)$$`
+
+em que:
+
+- `\(f(x) = w \times x + b\)`
+
+Chamamos `\(f\)` de **'layer'** (camada) na linguagem do Deep learning.
+
+---
+
+## Layers (Camadas)
+
+- Uma **'layer'** é uma transformação dos dados que é
+parametrizada por **pesos**. 
+
+- 'Aprender', então, significa encontrar os melhores **pesos** para cada camada.
+
+No exemplo:
+
+`$$f(x) = w \times x + b$$`
+
+Os pesos são `\(w\)` e `\(b\)`.
+
+- Essas camadas são os 'tijolos' do Deep Learning e existem diversas 'camadas'.
+
+- A camada do exemplo é chamada de **'Densa'** ou **'Linear'**.
+
+- Um modelo pode possuir uma ou mais dessas camadas.
+
+---
+
+## Regressão Linear
+
+![:scale 65%](img/Screen Shot 2020-05-09 at 14.32.20.png)
+
+Fonte: Figura adaptada do Deep Learning with R, Chollet, F. et al.
+
+
+**Objetivo**: encontrar os melhores 'pesos' para essa Layer.
+
+---
+
+## Função de perda
+
+- Mede quanto o modelo está perto do que queremos que ele fique.
+
+- No nosso caso, mede o quanto a previsão dada por `\(w \times x + b\)` está perto de `\(y\)`, o verdadeiro valor daquele imóvel.
+
+- Uma função de perda bastante usada é o **MSE** - Erro quadrático médio.
+
+- O MSE é dado por:
+
+`$$L(\hat{y}) = \frac{1}{n}\sum_{i=1}^{n} (y_i - \hat{y_i})^2$$`
+- Podemos reescrever em função dos pesos:
+
+`$$L(w, b) = \frac{1}{n} \sum_{i=1}^{n} (y_i - w \times x_i - b)^2$$`
+---
+
+## Função de perda em função do valor dos parâmetros
+
+&lt;img src="index_files/figure-html/unnamed-chunk-2-1.png" width="960" /&gt;
+
+---
+
+## Função de perda
+
+![:scale 50%](img/Screen Shot 2020-05-09 at 18.30.44.png)
+
+Fonte: Figura adaptada do Deep Learning with R, Chollet, F. et al.
+
+- A **função de perda** nos diz, dado um valor para cada peso, o quão próximo estamos do valor esperado.
+
+---
+
+## Encontrando o mínimo da função de perda
+
+Até agora:
+
+- Vimos que nosso objetivo é minimizar a função de perda.
+- Para isso precisamos encontrar o valor dos pesos que minimiza faz a função de perda ter o valor mínimo possível.
+
+Agora:
+
+- O processo de encontrar o mínimo de uma função é chamado de **otimização**. 
+- Existem diversos algoritmos de otimização. Em geral eles são adequados ou não dependendo da função que você está otimizando.
+- Em Deep Learning usamos algoritmos que são variações do **Gradient Descent** - método de descida do gradiente.
+
+---
+
+## Gradient Descent 
+
+O **gradient descent** diz que se uma função `\(L(x)\)` é diferenciável na vizinhança de um ponto `\(w\)` então `\(L(x)\)` decresce mais rapidamente se você andar de `\(w\)` para uma direção contrária ao gradient de `\(L\)` no ponto `\(w\)`. 
+
+Em outras palavras, fazer `\(w - \nabla L(w)\)` é a forma de caminhar o mais rápido possível para o mínimo de `\(L(x)\)`.
+
+![:scale 20%](img/700px-Gradient_descent.svg.png)
+
+Fonte: [Gradient Descent](https://en.wikipedia.org/wiki/Gradient_descent)
+
+---
+
+## Gradient descent no exemplo
+
+No nosso exemplo temos: 
+
+`$$L(w, b) = \frac{1}{n} \sum_{i=1}^{n} (y_i - w \times x_i - b)^2$$`
+
+Então para andar mais rápido para o mínimo de `\(L\)` cada passo de `\(w\)` e `\(b\)` tem que ser calculado da seguinte forma:
+
+`$$w_{(k+1)} = w_{(k)} - \alpha \frac{\partial L}{\partial w} = w_{(k)} - \alpha \frac{1}{n}\sum_{i=1}^{n} (-2 \times x_i)(y_i - w \times x_i -b)$$`
+
+`$$b_{(k+1)} = b_{(k)} - \alpha \frac{\partial L}{\partial b} = b_{(k)} - \alpha \frac{1}{n} \sum_{i=1}^{n} (-2)(y_i - w \times x_i -b)$$`
+
+**Calma!** vamos dissecar essas fórmulas.
+Para a formulação mais formal ver capítulo 6.5 do [Deep Learning Book](https://www.deeplearningbook.org/contents/mlp.html).
+
+---
+
+
+## Otimizando
+
+Esse é o diagrama geral que vale para os modelos que vamos implementar neste curso.
+
+![:scale 50%](img/Screen Shot 2020-05-09 at 19.17.36.png)
+
+Fonte: Figura adaptada do Deep Learning with R, Chollet, F. et al.
+
+---
+
+## Grafo de computação
+
+.pull-left[
+
+- É útil representar modelo em um grafo de computação.
+- **Cinza** são os pesos.
+- **Verde** são os dados.
+- **Laranja** são variáveis derivadas de dados &amp; pesos.
+
+]
+
+.pull-right[
+![:scale 100%](img/Screen Shot 2020-05-09 at 22.13.42.png)
+]
+
+
+---
+
+## Calculando as derivadas
+
+.pull-left[
+
+1. Calculamos as derivadas parciais para cada transformação.
+2. Usamos a regra da cadeia para calcular as derivadas `\(\frac{\partial L}{\partial w}\)` e `\(\frac{\partial L}{\partial b}\)`.
+
+Pela regra da cadeia temos:
+
+`$$\frac{\partial L}{\partial w} = 2(y_i - \hat{y}) \times x_i$$`
+
+`$$\frac{\partial L}{\partial b} = 2(y_i - \hat{y}) \times 1$$`
+
+**Nota**: tiramos as médias p/ simplicar a notação.
+
+]
+
+.pull-right[
+![:scale 100%](img/Screen Shot 2020-05-09 at 22.13.21.png)
+]
+
+---
+
+## Gradient descent
+
+No fim temos que a regra de atualização dos pesos é:
+
+`$$w_{(k+1)} = w_{(k)} - \alpha \times \frac{1}{n} \sum_{i = 1}^n \left( 2(y_i - \hat{y}) \times x_i \right)$$`
+
+`$$b_{(k+1)} = b_{(k)} - \alpha \times \frac{1}{n} \sum_{i = 1}^n \left( 2(y_i - \hat{y}) \times 1 \right)$$`
+- `\(\alpha\)` é um hiper parâmetro que chamamos de **'learning rate'**. Ele controla com qual intensidade vamos andar na direção do gradiente.
+
+- Na fórmula vemos que podemos obter `\(w_{(i+1)}\)`  em função do `\(w_{(i)}\)`, mas e o `\(w_{(0)}\)`? Geralmente inicializamos ele com algum número aleatório. A mesma coisa para o `\(b_{(0)}\)`.
+
+---
+
+## Gradient descent
+
+- **Esquerda** eixos `\(b\)` e `\(m\)` representam `\(b\)` e `\(w\)` no nosso exemplo. O eixo 'Error' representa o valor da função de perda.
+
+- Conseguimos visualizar a descida até o mínimo da função de perda pelo método do gradiente. 
+
+- Na **direita** a reta ajustada para os dados.
+
+![:scale 60%](img/0_D7zG46WrdKx54pbU.gif)
+
+Fonte: [https://alykhantejani.github.io/images/gradient_descent_line_graph.gif](https://alykhantejani.github.io/images/gradient_descent_line_graph.gif)
+
+---
+
+class: center, middle
+
+exemplo 01: exemplos/01-linear-regression.R
+
+---
+
+## Exercício 1
+
+Arquivo: exercicios/01-linear-regression.R
+
+![:scale 50%](img/Screen Shot 2020-05-11 at 14.25.07.png)
+
+---
+
+## SGD (Stochastic gradient descent)
+
+- Em vez de calcular a média da derivada em todos os exemplos da base de dados, calculamos em apenas 1 e já andamos. Isto é, trocamos:
+
+`$$w_{(k+1)} = w_{(k)} - \alpha \times \frac{1}{n} \sum_{i = 1}^n \left( 2(y_i - \hat{y}) \times x_i \right)$$`
+
+por
+
+`$$w_{(k+1)} = w_{(k)} - \alpha \times \left( 2(y_i - \hat{y}) \times x_i \right)$$`
+
+- Cada vez que atravessamos a base inteira dessa forma chamamos de **'epoch'**.
+
+- Agora é possível atualizar os pesos sem precisar fazer contas na base inteira. Mais **rápido**.
+
+- Como estimamos o passo com apenas uma observação, os passos (principalmente quando já estão perto do mínimo) podem ser meio ruins.
+
+---
+
+## SGD
+
+- Na prática, parece que o fato dos passos serem ruins perto do mínimo é bom - isso faz um certo tipo de regularização. Não se sabe explicar esse comportamento muito bem ainda.
+
+![:scale 40%](img/Screen Shot 2020-05-11 at 14.39.43.png)
+
+Fonte: https://www.stat.cmu.edu/~ryantibs/convexopt/lectures/stochastic-gd.pdf
+
+---
+
+## Mini-batch SGD
+
+- Em cada iteração, selecionamos uma amostra de tamanho `\(b\)` da base de tamanho `\(n\)`. Em geral `\(b &lt;&lt; n\)`. 
+
+- Calculamos o passo do GD com essa amostra. No final temos:
+
+`$$w_{(k+1)} = w_{(k)} - \alpha \times \frac{1}{b} \sum_{i = 1}^b \left( 2(y_i - \hat{y}) \times x_i \right)$$`
+
+- Na prática é o que funciona melhor. Compensa o passo do SGD ser meio ruim por se basear em apenas uma observação e o fato do GD ser muito pesado computacionalmente para bases muito grandes.
+
+- Em geral usa-se `\(b\)` (**batch size**) múltiplos de 2.
+
+---
+
+## Mini-batch SGD
+
+.pull-left[
+![:scale 80%](img/Screen Shot 2020-05-11 at 14.48.37.png)
+]
+
+.pull-right[
+![:scale 80%](img/Screen Shot 2020-05-11 at 14.48.44.png)
+]
+
+Fonte: https://www.stat.cmu.edu/~ryantibs/convexopt/lectures/stochastic-gd.pdf
+
+---
+
+## Variações
+
+- Existem outras variações do SGD, cada tentando resolver um problema diferente.
+
+- [Esse artigo](https://ruder.io/optimizing-gradient-descent/) é um ótimo resumo de todas as versões que existem. 
+
+- Não existe um que é extremamente melhor do que os outros.
+
+- Além do SGD, os mais usados são SGD com momentum, adam e rmsprop.
+
+---
+
+class: middle, center
+
+exemplo 02: exemplos/02-sgd.R
+
+---
+
+class: middle, center
+
+exercicio 02: exercicios/02-mini-batch-sgd.R
+
+---
+
+## TensorFlow
+
+- Biblioteca open-source para cálculos numéricos.
+- Desenvolvida incialmente pela Google.
+- Foco em Machine Learning e principalmente Deep Learning.
+- Muito rápido - implementado para diversos hardwares como GPU's e até TPU's.
+- Feature: **Automatic Differentiation**!
+- Um grande ecossistema de addosn e extensões.
+- Biblioteca mais utilizada para fazer Deep Learning atualmente.
+
+![:scale 75%](img/tf-logo.jpg)
+
+---
+
+## Keras
+
+- É uma biblioteca open-source criada para especificar modelos de Deep Learning
+- Foi criada antes do TensorFlow existir
+- Funciona com múltiplos 'backends' - exemplo Theano, CNTK e PlaidML
+- Foi **incorporada pelo TensorFlow** e à partir do 2.0 é a forma recomendada de
+especificar modelos no TensorFlow
+
+![](img/keras-logo-2018-large-1200.png)
+
+---
+
+## TensorFlow e Keras no R
+
+- TensorFlow e Keras são [implementados no R usando o 'reticulate'](https://blogs.rstudio.com/tensorflow/posts/2019-08-29-using-tf-from-r/), isso significa que chamamos funções do Python. 
+
+- Keras para o R fornece uma API muito mais *user fiendly* para quem já programa em R e quer aprender Deep Learning.
+
+- Muitos guias e tutoriais [aqui](https://tensorflow.rstudio.com/).
+
+- A performance é comparável com a do Python - as contas pesadas acontecem no C++. 
+
+- A comunidade é menor -&gt; tem seus prós e contras.
+
+
+---
+
+class: middle, center
+
+exemplo 03: exemplos/03-keras.R
+
+---
+
+class: middle, center
+
+exercício 03: exercicios/03-keras-linear-regression.R
+
+---
+
+## Multi-layer perceptron (MLP)
+
+- Essa imagem é uma das primeiras a passar pela cabeça quando falam sobre redes neurais.
+
+![:scale 45%](img/A-hypothetical-example-of-Multilayer-Perceptron-Network.png)
+
+Fonte: https://www.researchgate.net/figure/A-hypothetical-example-of-Multilayer-Perceptron-Network_fig4_303875065
+
+---
+
+## Notação matricial
+
+Escrever na forma escalar é mais fácil para exemplos mais simples mas,
+para exemplos um pouco mais avançados começa a ficar muito confusa.
+
+.center[
+![:scale 50%](img/Screen Shot 2020-05-11 at 23.27.43.png)
+]
+
+---
+
+## Notação matricial
+
+Re-escrevemos o modelo anterior usando a notação matricial.
+Veja que temos um pouco menos de caixinhas. Fica mais fácil
+de ler.
+
+.center[
+![:scale 50%](img/Screen Shot 2020-05-11 at 23.34.03.png)
+]
+
+---
+
+## MLP
+
+.pull-left[
+
+- Ao lado temos a representação do grafo computacional de um MLP com uma camada escondida ('hidden layer') com 2 neurônios.
+
+- `\(\sigma\)` é uma **função de ativação**, reposável por adicionar não linearidades ao modelo.
+
+- O número de colunas da matriz de pesos `\(W\)` é o número de **'hidden units'**.
+
+- A matrix `\(H\)` é o que chamamos de **'hidden units'**.
+
+]
+
+.pull-right[
+![](img/Screen Shot 2020-05-12 at 12.03.48.png)
+
+]
+
+---
+
+## MLP
+
+Vamos escrever a fórmula para calcular a previsão para uma observação `\(i\)`,  `\(\hat{y_i}\)`. Considere: 
+ 
+`\(W  = \begin{bmatrix}w_{11} &amp; w_{12}\\w_{21} &amp; w_{22}\end{bmatrix}\)`
+
+`\(b = \begin{bmatrix}b_{11} &amp; b_{12}\end{bmatrix}\)`
+
+`\(V = \begin{bmatrix}v_{11} &amp; v_{12}\end{bmatrix}\)`
+
+`\(a = \begin{bmatrix}a_{11}\end{bmatrix}\)`
+
+Então temos que
+
+`$$\hat{y_i} = v_{11}\sigma(w_{11} * x_{i1} + w_{21} * x_{i2} + b_{11}) + v_{12}\sigma(w_{12} * x_{i1} + w_{22} * x_{i2} + b_{12}) + a_{11}$$`
+---
+
+## MLP
+
+.pull-left[
+
+- Agora acrescentamos mais uma camada no nosso modelo.
+
+- Cada camada pode ter uma função `\(\sigma\)` diferente.
+
+- Cada camada pode ter um número de unidades diferente também.
+
+]
+
+.pull-right[
+
+![](img/Screen Shot 2020-05-12 at 12.40.13.png)
+
+]
+
+---
+
+## MLP
+
+A ideia de usar camadas surge da seguinte forma:
+
+- Um modelo linear só pode, por definição, representar funções lineares.
+
+- A seguir veio a ideia de criar modelos específicos para cada tipo de não linearidade que é estudada. Modelos exponenciais, modelos logistios, etc.
+
+- Teorema da aproximação universal (Hornik et al.) fala que um MLP com uma camada com uma função de ativação que achata as entradas, pode aproximar qualquer função desde que ela tenha um número suficiente de **'hidden units'**.
+
+- Na prática isso não funciona muito bem porque o número de **'hidden units'** pode ter que ser muito grande - então esbarramos na quantidade de dados disponível.
+
+---
+
+## MLP
+
+- A ideia a seguir foi usar várias camadas, ao invés de uma.
+
+- Várias funções podem ser aproximadas com uma quantidade menor de *hidden units* se a **arquitetura** tiver mais camadas.
+
+![](img/Screen Shot 2020-05-12 at 12.35.19.png)
+
+Fonte: [Deep Learning Book - capítulo 6](https://www.deeplearningbook.org/contents/mlp.html)
+
+---
+
+## Hidden units
+
+Existem duas escolhas com relação às **'hidden units'**:
+
+1. Qual é o número de hidden units? Em geral isso é uma função do tamanho da matrix `\(X\)`. Não existe uma regra de ouro para escolher isso, é preciso testar diversos tamanhos e ver qual fica melhor.
+
+2. A **função de ativação** é a parte mais importante. Em geral **rectiﬁed linear units** são a primeira coisa para testar. 
+
+A seguir vamos conhecer algumas das funções de ativação mais utilizadas. Antes disso, vale a pena lembrar alguns pontos.
+
+- As funções de ativação entram na conta do gradiente e portanto precisam ser deriváveis (pelo menos na maioria dos pontos).
+
+- Descobrir qual função de ativação vai funcionar é também uma área de pesquisa ativa, e em geral é necessário testar várias versões para descobrir qual fica melhor.
+
+---
+
+## Rectiﬁed Linear Units (ReLu)
+
+.pull-left[
+
+- Usamos a função de ativação `\(\sigma(z) = max\{0, z\}\)`.
+
+- A ideia do ReLu é ser fácil de otimizar, porque é muito parecido com simplesmente não ter ativação (ativação linear).
+
+- As derivadas são altas quando a unidade é importante, isto é, quando o output é alto.
+
+- A segunda derivada não tem muita influencia pois ou é zero ou um.
+
+- Ver capítulo [6.3.1 do Deep Learning Book](https://www.deeplearningbook.org/contents/mlp.html) para outras extensões.
+
+]
+
+.pull-right[
+&lt;img src="index_files/figure-html/unnamed-chunk-3-1.png" width="480" /&gt;
+]
+
+---
+
+## Sigmoid
+
+
+.pull-left[
+
+- A função sigmoid é dada por:
+
+`$$\sigma(z) = \frac{1}{1 + e^{-z}}$$`
+
+- Antes da introdução do ReLu, a maioria das redes neurais usava esse tipo de ativação.
+
+- Diferentemente da unidades lineares, a derivada da sigmoid fica saturada quando o input é muito negativo ou muito positivo.
+
+- Hoje em dia não se recomenda usá-la como função de ativação em camadas escondidas ('hidden layers').
+
+- Ver capítulo 6.2.3 do [Deep Learning Book](https://www.deeplearningbook.org/contents/mlp.html).
+
+]
+
+.pull-right[
+![](img/1_6A3A_rt4YmumHusvTvVTxw.png)
+
+Fonte: https://towardsdatascience.com/derivative-of-the-sigmoid-function-536880cf918e
+]
+
+---
+
+class: middle, center
+
+exemplo 04: exemplos/mlp.R
+
+---
+
+class: middle, center
+
+exercicio 04: exercicios/04-boston-housing.R
+
+---
+
+# Regressão logística
+
+- Até agora só falamos de redes neurais que podem retornar números em qualquer intervalo. Isto é, quando fazemos `\(\hat{y} = w*x + b\)`, `\(w\)` e `\(b\)` podem assumir quaisquer valores e portanto podem fazer com que `\(\hat{y}\)` seja qualuqer número de `\(-\inf\)` até `\(+\inf\)`.
+
+- Em problemas de classficação, por exemplo, não queremos que `\(\hat{y}\)` seja qualquer valor, e sim a probabilidade de `\(y\)` ser de uma determinada classe. Temos então 2 pontos:
+
+1. Queremos que `\(\hat{y}\)` seja um número entre 0 e 1.
+
+2. Como queremos que o output `\(\hat{y}\)` seja uma probabilidade, não queremos minimizar o MSE e sim uma outra função de perda que leve à essa interpretação. Além disso, o sigmoid satura muito rápido, então precisamos de uma função de perda que arrume isso. 
+
+Vamos ver como resolver esses dois problemas.
+
+---
+
+## `\(\hat{y}\)` precisa ser um número entre 0 e 1
+
+- Para resolver esse problema basta usar uma função de ativação na última camada que transforme o intervalo `\(]-\infty, \infty[\)` no intervalo `\([0,1]\)`.
+
+- Uma função famosa por isso, e que já conhecemos é a função sigmoid.
+
+`$$\sigma(z) = \frac{1}{1 + e^{-z}}$$`
+
+.center[
+![:scale 40%](img/1_6A3A_rt4YmumHusvTvVTxw.png)
+]
+
+Fonte: https://towardsdatascience.com/derivative-of-the-sigmoid-function-536880cf918e
+
+---
+
+## A função de perda
+
+Em geral usamos a função de perda que chamamos de **'cross entropy'**.
+
+Essa função é dada por:
+
+`$$L(\hat{y}) = \sum_{i = 1}^{n} \left[ y_i \times \log \hat{y_i} + (1-y) \times \log(1 - \hat{y_i}) \right]$$`
+Isso fica mais claro quando lemos o seguinte código:
+
+
+```r
+cross_entropy &lt;- function(y_hat) {
+  if (y == 1) -log(y_hat)
+  else -log(-y_hat)
+}
+```
+
+Isso equivale a estimativa de máxima verossimilhança quando assumimos que `\(y\)` tem distribuição `\(Bernoulli(\hat{y})\)`.
+
+---
+
+class: middle, center
+
+exemplo 05: exemplos/05-regressao-logística.R
+
+---
+
+class: middle, center
+
+exercício 05: exercicios/05-boston-housing-logistic.R
+
+---
+
+## Outras funções de perda
+
+- Existem muitas outras funções de perda que podem ser utilizadas.
+
+- Dependendo do prooblema você pode preferir uma ou outra.
+
+Alguns exemplos:
+
+- MAE - mean absolute error - para resposta numérica quando você não quer dar tanto peso para os outliers.
+
+- Categorical cross-entropy: é uma generalização da binary cross-entropy quando você tem mais do que duas classes.
+
+- Huber Loss: variação do mse um pouco menos sensível aos outliers.
+
+---
+
+## Mais de duas categorias
+
+- Quando temos um problema de predição de muitas categorias, a nossa resposta é uma matriz, por exemplo:
+
+
+```
+## # A tibble: 3 x 3
+##   banana  maçã laranja
+##    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+## 1      0     1       0
+## 2      1     0       1
+## 3      0     0       1
+```
+
+- O número de colunas igual ao número de categorias possíveis.
+
+- O número de linhas é o número de observações da base.
+
+- Os valores são 0 quando a observação **não** é daquela categoria e 1 quando é da categoria.
+
+---
+
+## Mais de duas categorias
+
+Queremos que o nosso modelo retorne uma matriz de probabilidades, por exemplo:
+
+
+```
+## # A tibble: 3 x 3
+##   banana  maçã laranja
+##    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+## 1    0.2   0.7     0.1
+## 2    0.6   0.1     0.3
+## 3    0.1   0.3     0.6
+```
+
+- Veja que as linhas somam 1.
+- Para isso usamos a função de ativação 'softmax'.
+
+Seja `\(x = (x_1, x_2, ... x_k)\)` então:
+
+`$$\sigma(x)_i = \frac{e^{x_i}}{\sum_{i = 1}^{n}{e^{x_i}}}$$`
+
+---
+
+## Mais de duas categorias
+
+Também precisamos modificar a função de perda. Ao invés de usarmos a função binary crossentropy, usamos a função categorical crossentropy. 
+
+.pull-left[
+
+A binary crossentropy era dada assim:
+
+
+```r
+cross_entropy &lt;- function(y_hat) {
+  if (y == 1) -log(y_hat)
+  else -log(-y_hat)
+}
+```
+]
+
+.pull-right[
+A categorical cross entropy é dada por (considere que y_hat agora é uma matriz em que o numero de colunas é o número de classes).
+
+
+```r
+cross_entropy &lt;- function(y_hat) {
+  if (y == 1) -log(y_hat[,1])
+  else if (y == 2) - log(y_hat[,2])
+  ...
+  else if (y == k) - log(y_hat[,k])
+}
+```
+]
+
+---
+
+exercicio 06: exercicios/06-mlp-mnist.R
+
+---
+
+class: middle, center, inverse
+
+# Convolutional Neural Networks (CNN)
+
+
+---
+
+## CNN's 
+
+- É uma arquitetura de redes neurais que é útil principalmente para classificação de imagens. 
+
+![](img/1_vkQ0hXDaQv57sALXAJquxA.jpeg)
+Fonte: [Introduction to CNN's ](https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53)
+
+---
+
+## Imagens como dados
+
+- Uma imagem em preto e branco pode ser representada da seguinte forma.
+
+![:scale 100%](img/Screen Shot 2020-05-16 at 15.46.49.png)
+
+Cada valor representa a intensidade de cinza. 
+
+---
+
+## Imagens como dados
+
+.pull-left[
+
+- Imagens coloridas são representadas como um array de 3 dimensões.
+
+- É como se fosse um 'empilhado' de 3 matrizes. 
+
+- Cada elemento é a intensidade de cada cor daquele píxel.
+
+]
+
+.pull-right[
+
+![:scale 50%](img/1.jpg)
+
+Fonte: [Create a Retro CRT Distortion Effect Using RGB Shifting](https://code.tutsplus.com/tutorials/create-a-retro-crt-distortion-effect-using-rgb-shifting--active-3359)
+
+
+![:scale 50%](img/Screen Shot 2020-05-16 at 15.34.53.png)
+]
+
+---
+
+## CNN's 
+
+.pull-left[
+A principal diferença com relação à MLP é que a as camadas 'densas' aprendem padrões globais dos inputs, enquanto convoluções aprendem padrões **locais** dos inputs. 
+]
+
+.pull-right[
+
+![:scale 75%](img/Screen Shot 2020-05-16 at 14.52.16.png)
+
+Fonte: Deep Learning with R
+
+]
+
+---
+
+## CNN's 
+
+Essa característica, de aprender padrões **locais**, permitem duas importantes propriedades:
+
+.pull-left[
+- **translation invariant**: um padrão pode ser encontrado mesmo que ele apareça no canto em uma imagem e no centro em outra. 
+
+- **hierarquia espacial de padrões**: em um primeiro momento a CNN aprende a identificar cantos, linhas. Mais para frente aprende padrões um pouco maiores e mais complexos.
+]
+
+.pull-right[
+![:scale 75%](img/Screen Shot 2020-05-16 at 15.12.57.png)
+
+Fonte: Deep Learning with R
+
+]
+
+---
+
+## Uma convolução
+
+.pull-left[
+- Definimos uma matriz de pesos (em cinza na representação ao lado)
+
+- Andamos com essa matriz de pesos para cada parte da imagem (em azul ao lado). 
+
+- Esses pesos são multiplicados e depois somados para gerar uma nova 'imagem' (em verde).
+
+]
+
+.pull-right[
+![](img/padding_strides.gif)
+
+Fonte: [Conv arithmetic](https://github.com/vdumoulin/conv_arithmetic)
+]
+
+---
+
+exemplo 06: convolution.R
+
+---
+
+## Outros tipos de padding/strides
+
+&lt;table style="width:100%; table-layout:fixed;"&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;img width="150px" src="img/no_padding_no_strides.gif"&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img width="150px" src="img/arbitrary_padding_no_strides.gif"&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img width="150px" src="img/same_padding_no_strides.gif"&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img width="150px" src="img/full_padding_no_strides.gif"&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;No padding, no strides&lt;/td&gt;
+    &lt;td&gt;Arbitrary padding, no strides&lt;/td&gt;
+    &lt;td&gt;Half padding, no strides&lt;/td&gt;
+    &lt;td&gt;Full padding, no strides&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;img width="150px" src="img/no_padding_strides.gif"&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img width="150px" src="img/padding_strides.gif"&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img width="150px" src="img/padding_strides_odd.gif"&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;No padding, strides&lt;/td&gt;
+    &lt;td&gt;Padding, strides&lt;/td&gt;
+    &lt;td&gt;Padding, strides (odd)&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+---
+
+## CNN's 
+
+Primeiro temos um 'kernel' (matriz de parâmetros p/ cada canal):
+
+![](img/1_8dx6nxpUh2JqvYWPadTwMQ.gif)
+
+Fonte: [Intuitively Understanding Convolutions for Deep Learning](https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1)
+
+---
+
+## CNN's
+
+Em seguida somamos os outputs de cada canal:
+
+![](img/1_CYB2dyR3EhFs1xNLK8ewiA.gif)
+
+Fonte: [Intuitively Understanding Convolutions for Deep Learning](https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1)
+
+---
+
+## Max Pool
+
+Parece com o que fazemos na convolução, mas em vez disso calculamos o máximo dos valores de cada janela.
+
+![:scale 50%](img/1_Fw-ehcNBR9byHtho-Rxbtw.gif)
+
+Fonte: [Intuitively Understanding Convolutions for Deep Learning](https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1)
+
+---
+
+
+## Resumo:
+
+- Mesclamos algumas camadas de convolução e max pooling, diminuindo a altura e largura das imagens e aumentando a profundidade.
+
+- Depois transformamos em uma matriz e fazemos um modelo de classificação logístico usual.
+
+![](img/1_vkQ0hXDaQv57sALXAJquxA.jpeg)
+
+---
+
+class: middle, center
+
+exemplo 07 - exemplos/07-conv-mnist.R
+
+---
+
+class: middle, center
+
+exercício 07: exercícios/07-cifar-conv.R
+
+---
+
+## Dropout
+
+- Técnica de regularização bastante utilizada em deep learning.
+
+- Consiste em aleatóriamente zerar alguns outputs.
+
+- É parametrizado por uma probabilidade `\(p\)` de zerar alguns parâmetros.
+
+![:scale 50%](img/Screen Shot 2020-05-18 at 15.27.12.png)
+
+Fonte: [Dropout: A Simple Way to Prevent Neural Networks from
+Overfitting](http://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf)
+
+---
+
+## Batch normalization
+
+.pull-left[
+
+- Outra técnica que ajuda bastante a ajustar modelos em deep lerning.
+
+- Consiste em normalizar os valores das 'hidden units'.
+
+- Em geral usamos Batch Norm antes da ativação.
+
+Ver: https://www.youtube.com/watch?v=tNIpEZLv_eg e https://www.youtube.com/watch?v=nUUqwaxLnWs
+
+]
+
+.pull-right[
+![:scale 75%](img/Screen Shot 2020-05-18 at 15.43.41.png)
+
+Fonte: [Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift](https://arxiv.org/pdf/1502.03167v3.pdf)
+]
+
+---
+
+class: middle, center
+
+exercício 08: exercicios/08-dropout-batch_norm.R
+
+---
+
+## Modelos pré-treinados
+
+- Reutilizar a parte 'feature learning' do diagrama abaixo em outros bancos de dados.
+
+- O conceito não vale apenas p/ imagens mas para qualquer modelo em deep learning.
+
+![](img/1_vkQ0hXDaQv57sALXAJquxA.jpeg)
+
+---
+
+## Modelos pré-treinados
+
+- Um modelo inteiro é treinado em um banco de dados X.
+
+- Salvamos apenas a parte 'feature learning'.
+
+- Em um outro banco de dados usamos as 'features' que foram aprendidas no banco de dados X e apenas ajustamos a parte de classificar para um outro banco de dados.
+
+![:scale 85%](img/1_vkQ0hXDaQv57sALXAJquxA.jpeg)
+
+---
+
+## Modelos pré-treinados
+
+As vantagens são:
+
+- Reduz muito o tempo para treinar um modelo.
+
+- Faz com que seja possível treinar modelos em bases menores.
+
+Desvantagens:
+
+- Tem que tomar cuidado com a base em que eles foram treinados inicialmente.
+
+---
+
+## tfhub
+
+- Um [pacote de R](https://github.com/rstudio/tfhub) para fazer transfer learning.Possibilita usar modelos pré treinados disponíveis no [tfhub.dev](https://tfhub.dev/).
+
+- É fácil de usar! Só mais uma 'camada' do Keras
+
+
+```r
+url &lt;-  "https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/2"
+layer_hub(handle = url)
+```
+
+.center[
+![:scale 50%](img/Screen Shot 2020-05-18 at 16.46.02.png)
+]
+
+---
+
+class: middle, center
+
+exemplo 08: exemplos/tfhub.R
+
+---
+
+## LeNet5
+
+- 1994!
+
+![](img/0_V1vb9SDnsU1eZQUy.jpg)
+
+---
+
+## ResNets
+
+- 2015
+- passar os inputs para as camadas da frente.
+
+![:scale 75%](img/1_6hF97Upuqg_LdsqWY6n_wg.png)
+
+---
+
+## Outros tópicos
+
+- Image Segmentation: segmentar a imagem em diversos objetos. [U-Net](https://arxiv.org/abs/1505.04597) é um dos principais representantes.
+
+- Object detection: encontrar objetos nas imagens e marcá-los. [YOLO](https://pjreddie.com/darknet/yolo/)
+
+![:scale 30%](img/Screen_Shot_2018-03-24_at_10.48.42_PM.png)
+
+- Face recognition: uso de [triplet loss function](https://en.wikipedia.org/wiki/Triplet_loss).
+
+---
+
+class: middle, center, inverse
+
+# Redes neurais em textos
+
+---
+
+## Textos como dados
+
+![](img/Screen Shot 2020-05-25 at 14.08.54.png)
+
+---
+
+## Cada texto, um vetor
+
+![](img/Screen Shot 2020-05-25 at 14.09.27.png)
+
+---
+
+class: middle, center
+
+exemplo 09: examples/09-text-vectorization.R
+
+---
+
+## Embedding's (ou Encoding)
+
+- Até agora, cada palavra virou um número inteiro.
+
+- O problema disso é que esses números inteiros representam categorias e não têm as principais de serem números.
+
+- Não faz sentido fazer operações matemáticas como multiplicação e adição com esses números. 
+
+- Não existe uma noção de proximidade entre as palavras.
+
+---
+
+## One-hot encoding
+
+- Cada texto é repsentado por uma matriz
+
+![:scale 75%](img/Screen Shot 2020-05-25 at 14.31.13.png)
+
+---
+
+## One-hot encoding
+
+- O problema de fazer 'one-hot encoding' é principalmente computacional.
+
+- Imagine um vocabulário de 20k palavras, faz com que a matriz tenha 20k colunas, a maioria dos valores sendo **0**, sem trazer
+muita informação.
+
+- A distância entre todas as palavras é igual.
+
+---
+
+## Embedding
+
+- Assume-se cada palavra endo representada por um vetor de pesos de dimensão `\(d\)`.
+
+![:scale 75%](img/Screen Shot 2020-05-25 at 14.44.36.png)
+
+---
+
+## Embedding
+
+![:scale 50%](img/Screen Shot 2020-06-01 at 15.36.17.png)
+
+---
+
+class: middle, center
+
+exemplo 10: examples/10-embedding.R
+
+---
+
+## Avg pooling
+
+![:scale 75%](img/Screen Shot 2020-06-01 at 15.31.59.png)
+
+---
+
+class: middle, center
+
+exemplo 11: examples/11-avg-pooling.R
+
+---
+
+class: middle, center
+
+exercício 10: exercicios/10-sarcasm.R
+
+---
+
+## O problema de não considerar a sequência
+
+- Tirar as médias da função da ativação fazem com que a gente perda a noção de
+sequências, o que pode ser problemático.
+
+- Existem redes neurais que conseguem manter a noção de sequência para
+fazer a previsão.
+
+---
+
+![:scale 90%](img/simple-rnn.png)
+
+---
+
+![:scale 90%](img/simple-rnn 1.png)
+
+---
+
+class: middle, center
+
+exemplo 12: exemplos/12-simple-rnn
+
+---
+
+## Problemas das RNN's simples
+
+- Vanishing gradient problem: é como se estivéssemos encadeando muitas camadas densas. Conforme aumentamos o tamanho das sequências, fica cada vez mais difícil de um input do final ter efeito sobre os parâmteros das primmeiras camadas pois o gradiente vai ficando muito pequeno.
+
+![](img/Screen Shot 2020-06-01 at 15.13.10.png)
+
+---
+
+## LSTM's
+
+![](img/LSTM3-chain.png)
+
+Fonte: https://colah.github.io/posts/2015-08-Understanding-LSTMs/
+
+---
+
+## LSTM'S
+
+![](img/1_VOXRGhOShoWWks6ouoDN3Q.gif)
+
+Fonte: https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
+
+---
+
+class: middle, center
+
+exemplo 13: exemplos/13-simple-lstms
+
+---
+
+class: middle, center
+
+exemplo 14: exemplos/14-lstm
+
+---
+
+class: middle, center
+
+exercício 11: exercícios/11-lstm-sarcasm.R
+
+---
+
+## GRU's
+
+![](img/1_jhi5uOm9PvZfmxvfaCektw.png)
+
+Fonte: https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
+
+---
+
+class: middle, center
+
+exemplo 15: exemplos/15-simple-gru.R
+
+---
+
+class: middle, center
+
+exemplo 16: exemplos/16-gru.R
+
+---
+
+## Embeddings pré treinadas
+
+- Ao invés de inicializar a matriz de embeddings de forma aleatória, usamos os pesos obtidos em outros modelos.
+
+- Um dos mais famosos é o GLOVE: um método não supervisionado para obtenção desses pesos: https://nlp.stanford.edu/projects/glove/
+
+![](img/Screen Shot 2020-06-01 at 16.58.21.png)
+
+---
+
+class: middle, center
+
+exemplo 17: exemplos/17-pre-trained-embedding.R
+
+---
+
+class: middle, center
+
+exercicio 12: exercicios/12-pre-trained-sarcasm.R
+
+---
+
+class: middle, center
+
+exemplo 18: exemplos/18-encadeando-lstms.R
+
+
+---
+
+RNN's bidirecionais
+
+![](img/1_6QnPUSv_t9BY9Fv8_aLb-Q.png)
+
+Fonte: https://towardsdatascience.com/understanding-bidirectional-rnn-in-pytorch-5bd25a5dd66
+
+---
+
+class: middle, center
+
+exemplo 19: exemplos/19-bidirecional.R
+
+---
+
+class: middle, center
+
+exemplo 20: exemplos/20-quora.R
+
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macro.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
