@@ -19,6 +19,37 @@ Repositório com material das aulas de deep learning com R.
       - Redes neurais convolucionais (CNN)
       - *Long short-term memory* (LSTM)
 
+## Slides
+
+Os slides do curso podem ser encontrados nesse
+[link](https://curso-r.github.io/202011-deep-learning/slides).
+
+## Instalação
+
+Os seguintes programas serão instalados. Estamos prevendo algum tempo no
+início do curso para instalar os pacotes mas se você já conseguir
+instalar, melhor\!
+
+1)  Instale o R\! De preferência a versão mais recente (\>= 4.0).
+
+2)  Execute as seguintes linhas de código em uma sessão limpa do R.
+    (Certifique-se de fechar todas as outras sessões do R/RStudio que
+    estiverem abertas no seu computador).
+
+<!-- end list -->
+
+    install.packages("reticulate")
+    reticulate::install_miniconda()
+    install.packages(c("keras", "tfhub"))
+    keras::install_keras()
+    tfhub::install_tfhub()
+
+3)  Verifique a instalação com:
+
+<!-- end list -->
+
+    tensorflow::tf_version() # deve retornar 2.2
+
 ## Scripts usados em aula
 
 #### Exemplos
