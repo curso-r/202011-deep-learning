@@ -94,6 +94,25 @@ library(tidyverse)
 </div>
 ]
 
+---
+
+## Informações das aulas
+
+- Aula começa +- 19h10. Podemos tirar dúvidas a partir de 18h30.
+- Intervalo de 10 minutos às 8h30.
+- Exercícios em geral vão ser p/ depois da aula e correção no início da aula seguinte.
+- Qualquer dúvida podem abrir o microfone e me interromper. Pode também perguntar pelo chat.
+- Vou criar um tópico de dúvidas no discourse para cada exercício que eu passar.
+- Gravações: vou postar o vídeo no youtube e mandar o link pelo classroom.
+
+---
+
+class: middle, center
+
+
+## Apresentação
+
+
 
 ---
 
