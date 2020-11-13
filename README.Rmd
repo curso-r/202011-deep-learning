@@ -84,8 +84,8 @@ knitr::kable(
 knitr::kable(
   tibble::tibble(
     exercicio = list.files("exercicios/"),
-    link = paste0("[link](https://curso-r.github.io/202011-deep-learning/exemplos/", exercicio, ")"),
-    gh_link = paste0("[link](https://github.com/curso-r/202011-deep-learning/blob/main/exemplos/", exercicio, ")")
+    link = paste0("[link](https://curso-r.github.io/202011-deep-learning/exercicios/", exercicio, ")"),
+    gh_link = paste0("[link](https://github.com/curso-r/202011-deep-learning/blob/main/exercicios/", exercicio, ")")
   )
 )
 ```
@@ -96,8 +96,8 @@ knitr::kable(
 knitr::kable(
   tibble::tibble(
     exercicio = list.files("respostas/"),
-    link = paste0("[link](https://curso-r.github.io/202011-deep-learning/exemplos/", exercicio, ")"),
-    gh_link = paste0("[link](https://github.com/curso-r/202011-deep-learning/blob/main/exemplos/", exercicio, ")")
+    link = paste0("[link](https://curso-r.github.io/202011-deep-learning/respostas/", exercicio, ")"),
+    gh_link = paste0("[link](https://github.com/curso-r/202011-deep-learning/blob/main/respostas/", exercicio, ")")
   )
 )
 ```
