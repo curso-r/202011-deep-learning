@@ -29,16 +29,14 @@ plot(as.raster(new_img/max(new_img)))
 
 # ---------- como Keras faz -----------------
 
-w2 <- w %>% 
-  rray::rray_expand(3) %>% 
-  rray::rray_expand(4)
+w2 <- w
+dim(w2) <- c(dim(w2), 1, 1)
 
 conv <- layer_conv_2d(filters = 1, kernel_size = c(3,3), use_bias = FALSE,
                       weights = list(w2))
 
-im <- img %>% 
-  rray::rray_expand(1) %>% 
-  rray::rray_expand(4)
+im <- img
+dim(im) <- c(1, dim(img), 1)
 
 dim(im)
 
