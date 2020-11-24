@@ -37,12 +37,12 @@ output <-  input %>%
   layer_dense(units = ncol(y), activation = "sigmoid")
 
 model <- keras_model(input, output)
-
+auc <- tensorflow::tf$keras$metrics$AUC()
 model %>% 
   compile(
     loss = "binary_crossentropy",
     optimizer = "sgd",
-    metrics = "accuracy"
+    metrics = list("accuracy", auc)
   )
 
 # ajuste

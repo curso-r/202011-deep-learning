@@ -34,6 +34,8 @@ output <-  input %>%
   layer_global_average_pooling_1d() %>% 
   layer_dense(units = ncol(y), activation = "sigmoid")
 
+auc <- tensorflow::tf$keras$metrics$AUC()
+
 model <- keras_model(input, output)
 summary(model)
 
@@ -41,7 +43,7 @@ model %>%
   compile(
     loss = "binary_crossentropy",
     optimizer = "sgd",
-    metrics = "accuracy"
+    metrics = list("accuracy", auc)
   )
 
 # ajuste
