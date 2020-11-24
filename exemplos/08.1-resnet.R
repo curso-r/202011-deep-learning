@@ -86,7 +86,7 @@ model <- keras_model(input, output)
 
 model %>% compile(
   loss = "categorical_crossentropy",
-  optimizer = "adam",
+  optimizer = "sgd",
   metrics = "accuracy"
 )
 
