@@ -3,17 +3,15 @@
 if (!dir.exists("captcha/")) {
 
   path <- pins::pin(
-    "https://storage.googleapis.com/decryptr/data-raw/rsc.zip"  
+    "https://storage.googleapis.com/decryptr/data-raw/rsc.zip"
   )
-  
-  unzip(path, exdir = "captchas/")
   
 }
 
 
 # leitura dos captchas
 
-arqs <- fs::dir_ls("captchas", glob = "*.png")
+arqs <- path
 
 captchas <- decryptr::read_captcha(arqs, ans_in_path = TRUE, 
                        vocab = c(0:9, letters))

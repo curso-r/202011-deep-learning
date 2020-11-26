@@ -17,6 +17,8 @@ for(i in 1:n) {
     x[i,,1] <- seq(from = max(v), to = min(v), length.out = l)
 }
 
+plot(x[1,,])
+
 # Model ------------------------------------------------------------
 
 # use float64 for comparison with R
@@ -27,10 +29,9 @@ input <- layer_input(shape = c(l,1))
 output <- input %>% 
   layer_lstm(
     units = 1, 
-    input_shape = c(5,1), 
     use_bias = FALSE,
     unit_forget_bias = FALSE,
-    recurrent_activation = "tanh",
+    recurrent_activation = "sigmoid",
     activation = "tanh"
   ) %>% 
   layer_activation("sigmoid")
@@ -56,16 +57,14 @@ w <- get_weights(model)
 s <- 0
 c <- 0
 x_ <- x[1,,]
-
-
 for (t in 1:l) {
   
-  i     <- tanh(w[[2]][1,1]*s + w[[1]][1,1]*x_[t])
-  f     <- tanh(w[[2]][1,2]*s + w[[1]][1,2]*x_[t])
+  i     <- sigm(w[[2]][1,1]*s + w[[1]][1,1]*x_[t])
+  f     <- sigm(w[[2]][1,2]*s + w[[1]][1,2]*x_[t])
   c_hat <- tanh(w[[2]][1,3]*s + w[[1]][1,3]*x_[t])
   
   c <- f*c + i*c_hat
-  o <- tanh(s*w[[2]][1,4] + w[[1]][1,4]*x_[t])
+  o <- sigm(s*w[[2]][1,4] + w[[1]][1,4]*x_[t])
   s <- o*tanh(c)
   
 }
